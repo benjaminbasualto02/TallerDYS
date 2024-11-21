@@ -3,76 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="description" content="Juego de Tic Tac Toe con diferentes niveles de dificultad y tamaños de tablero.">
     <title>Juego Tic Tac Toe</title>
+    <!-- Enlace al CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Enlace al CSS personalizado -->
     <link rel="stylesheet" href="../CSS/Tablero.css">
 </head>
 <body>
-
+    <!-- Contenedor principal del juego -->
     <div class="container mt-5">
-        <h2>Tablero de Tic Tac Toe</h2>
+        <!-- Título del juego -->
+        <h2 class="text-center">Juego Tic Tac Toe</h2>
+        
+        <!-- Contenedor del marcador -->
+        <div id="score-board" class="my-3 text-center">
+            <p><strong>Jugador:</strong> <span id="player-score">0</span></p>
+            <p><strong>IA:</strong> <span id="ai-score">0</span></p>
+            <p><strong>Empates:</strong> <span id="ties-score">0</span></p>
+        </div>
+
+        <!-- Contenedor del tablero -->
         <div id="board-container"></div> <!-- Aquí se mostrará el tablero -->
-        <div id="game-status"></div> <!-- Aquí se mostrará el estado del juego -->
+
+        <!-- Contenedor del estado del juego -->
+        <div id="game-status" class="mt-3 text-center"></div> <!-- Aquí se mostrará el estado del juego -->
     </div>
 
+    <!-- Scripts -->
     <script>
-        // Función para obtener los parámetros de la URL
-        function getURLParameter(name) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name);
-        }
-
-        // Obtener los parámetros del tablero y la dificultad
-        const boardSize = parseInt(getURLParameter('boardSize'));
-        const difficulty = getURLParameter('difficulty');
-
-        // Verificar si los parámetros existen
-        if (!boardSize || !difficulty) {
-            document.getElementById('game-status').innerText = "Parámetros incorrectos o faltantes.";
-        } else {
-            // Llamar a la función para generar el tablero
-            createBoard(boardSize);
-        }
-
-        // Función para crear el tablero según el tamaño seleccionado
-        function createBoard(size) {
-            const boardContainer = document.getElementById('board-container');
-            boardContainer.innerHTML = "";  // Limpiar el contenedor del tablero
-
-            // Crear el tablero
-            const board = document.createElement('div');
-            board.classList.add('board');
-            for (let row = 0; row < size; row++) {
-                const rowElement = document.createElement('div');
-                rowElement.classList.add('board-row');
-                for (let col = 0; col < size; col++) {
-                    const cell = document.createElement('div');
-                    cell.classList.add('board-cell');
-                    cell.dataset.index = row * size + col; // Asignar un índice único a cada celda
-                    rowElement.appendChild(cell);
-                }
-                board.appendChild(rowElement);
+        document.addEventListener("DOMContentLoaded", function () {
+            // Obtención de parámetros de la URL
+            function getURLParameter(name, defaultValue) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.has(name) ? urlParams.get(name) : defaultValue;
             }
-            boardContainer.appendChild(board);
 
-            // Iniciar el juego con la IA según la dificultad seleccionada
-            startGame(size, difficulty);
-        }
+            // Leer los parámetros
+            const boardSize = parseInt(getURLParameter('boardSize', 3)); // Tamaño predeterminado: 3x3
+            const difficulty = getURLParameter('difficulty', 'facil'); // Dificultad predeterminada: fácil
 
-        // Función para iniciar el juego
-        function startGame(size, difficulty) {
-            // Aquí puedes implementar la lógica de la IA con base en la dificultad
-            console.log("Iniciando juego con tablero de tamaño " + size + " y dificultad " + difficulty);
-            
-            // En este punto puedes llamar a la lógica de IA según la dificultad
-            // Por ejemplo, podrías tener un sistema que ajuste la inteligencia de la IA dependiendo de la dificultad
+            console.log(`Tamaño del tablero: ${boardSize}, Dificultad: ${difficulty}`); // Para depuración
 
-            // Después de generar el tablero y la IA, iniciar el ciclo del juego.
-            // Por ahora, solo mostrar un mensaje de estado:
-            document.getElementById('game-status').innerText = "Juego iniciado. ¡Buena suerte!";
-        }
+            // Construir el juego
+            buildGame(boardSize, difficulty);
+        });
     </script>
-
-    <script src="../JS/TicTacToe.js"></script> <!-- Lógica de TicTacToe y la IA -->
+    <script src="../JS/tictactoe.js"></script>
 </body>
 </html>

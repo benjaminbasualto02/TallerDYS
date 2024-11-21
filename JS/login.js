@@ -16,6 +16,9 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     if (usuarioValido) {
         messageElement.textContent = 'Inicio de sesión exitoso!';
         messageElement.style.color = 'green';
+        // Guardar el usuario actual en el localStorage
+        localStorage.setItem('currentUser', email);
+
         // Redirigir a la página del menú
         setTimeout(() => {
             window.location.href = 'menu.html';  // Redirige a 'menu.html'

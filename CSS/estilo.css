@@ -133,3 +133,37 @@ button {
 .modal-body button {
     margin-bottom: 10px;
 }
+
+/* Estilo para los botones del modal */
+.modal-body button {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #000000; /* Texto negro */
+    border: 1px solid #000000; /* Borde negro */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.modal-body button:hover {
+    background-color: #000000; /* Fondo negro al pasar el cursor */
+    color: #ffffff; /* Texto blanco al pasar el cursor */
+    border-color: #ffffff; /* Borde blanco al pasar el cursor */
+}
+
+#playButton {
+    background-color: #28a745; /* Verde intenso */
+    color: #ffffff; /* Texto blanco */
+    border: 1px solid #28a745; /* Borde del mismo color */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s, border-color 0.3s; /* Transiciones suaves */
+}
+
+#playButton:hover {
+    background-color: #218838; /* Verde más oscuro */
+    border-color: #1e7e34; /* Borde más oscuro */
+}
