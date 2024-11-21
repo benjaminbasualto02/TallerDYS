@@ -1,0 +1,72 @@
+/* Estilo para el contenedor del juego */
+#game-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    background-image: url('../CSS/fondo1.jpg'); /* Ruta de la imagen de fondo */
+    background-size: cover; /* Asegura que la imagen cubra todo el área */
+    background-position: center; /* Centra la imagen de fondo */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para la cuadrícula del tablero */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100px);
+    grid-template-rows: repeat(auto-fill, 100px);
+    gap: 5px;
+    border: 2px solid #333; /* Opcional: Agregar borde alrededor de la cuadrícula */
+    border-radius: 10px;
+}
+
+/* Estilo para cada celda del tablero */
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #8f3a3a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    border: 1px solid #020000;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+.cell:hover {
+    background-color: #e0e0e0;
+}
+
+/* Estilo para mostrar el texto "Jugar" */
+button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Estilo para el título del juego */
+h2 {
+    text-align: center;
+    color: #000000;
+    font-family: 'Patrick Hand', sans-serif;
+}
+
+body {
+    background-color: #332626;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
