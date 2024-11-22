@@ -1,0 +1,118 @@
+/* Estilo general del cuerpo */
+body {
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-image: url('../CSS/fondo1.jpg'); /* Fondo similar al resto */
+    background-size: cover;
+    background-position: center;
+    color: #333;
+}
+
+/* Contenedor principal */
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo semitransparente */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 20px 40px;
+    max-width: 800px;
+    width: 90%;
+    margin-top: 30px;
+}
+
+/* Encabezado */
+h1, h2 {
+    text-align: center;
+    color: #000;
+    font-family: 'Patrick Hand', sans-serif;
+    margin-bottom: 20px;
+}
+
+/* Sección de preguntas frecuentes */
+#faq .accordion-button {
+    background-color: #8f3a3a;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+#faq .accordion-button:hover {
+    background-color: #aa4b4b;
+}
+
+#faq .accordion-button:not(.collapsed) {
+    background-color: #6f2d2d;
+    color: #fff;
+}
+
+#faq .accordion-body {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Formulario de contacto */
+form {
+    margin-top: 20px;
+}
+
+form label {
+    font-weight: bold;
+    color: #333;
+}
+
+form input,
+form textarea {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #8f3a3a;
+    outline: none;
+    box-shadow: 0 0 5px rgba(143, 58, 58, 0.5);
+}
+
+form button {
+    background-color: #8f3a3a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #6f2d2d;
+}
+
+/* Estado del formulario */
+#form-status {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px 20px;
+    }
+
+    h1, h2 {
+        font-size: 1.5rem;
+    }
+
+    form button {
+        width: 100%;
+    }
+}

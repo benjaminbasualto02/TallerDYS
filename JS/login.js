@@ -16,9 +16,10 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     if (usuarioValido) {
         messageElement.textContent = 'Inicio de sesión exitoso!';
         messageElement.style.color = 'green';
-        // Guardar el usuario actual en el localStorage
-        localStorage.setItem('currentUser', email);
-
+    
+        // Guardar toda la información del usuario actual en el localStorage
+        localStorage.setItem('currentUser', JSON.stringify(usuarioValido));
+    
         // Redirigir a la página del menú
         setTimeout(() => {
             window.location.href = 'menu.html';  // Redirige a 'menu.html'
@@ -26,5 +27,5 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     } else {
         messageElement.textContent = 'Correo electrónico o contraseña incorrectos.';
         messageElement.style.color = 'red';
-    }
+    }    
 });
