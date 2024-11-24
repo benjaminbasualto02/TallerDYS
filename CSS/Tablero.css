@@ -66,3 +66,65 @@ h2 {
     color: #333333;
     font-family: 'Patrick Hand', sans-serif;
 }
+
+
+
+
+
+
+
+
+/* Estilo para el modal */
+.modal-content {
+    background-color: #f2f2f2; /* Fondo gris claro */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #333333; /* Texto en gris oscuro */
+    font-family: 'Patrick Hand', sans-serif;
+}
+
+/* Estilo para el encabezado del modal */
+.modal-header {
+    background-color: #000000; /* Fondo gris medio */
+    border-bottom: 1px solid #cccccc;
+    color: #ffffff; /* Texto negro */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Estilo para el cuerpo del modal */
+.modal-body {
+    background-color: #666666;
+    color: #ffffff;
+}
+
+/* Botones en el modal */
+.modal-body .btn {
+    background-color: #838383; /* Gris oscuro */
+    color: #ffffff; /* Texto blanco */
+    border: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.modal-body .btn:hover {
+    background-color: #000000; /* Más oscuro al pasar el cursor */
+    transform: scale(1.05);
+}
+
+/* Botón de volver al menú */
+.modal-body #backToMenu {
+    background-color: #777777; /* Rojo */
+    color: #ffffff; /* Texto blanco */
+}
+
+.modal-body #backToMenu:hover {
+    background-color: #c9302c; /* Rojo más oscuro */
+}
+
+/* Estilo para los bordes del modal */
+.modal-footer {
+    border-top: 1px solid #242424;
+    background-color: #4b4b4b;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
