@@ -5,8 +5,22 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-    background-image: url('fondo1.jpg');
 }
+
+/* Tema oscuro */
+.dark-theme {
+    background-image: url('fondo1.jpg');
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* Tema claro */
+.light-theme {
+    background-image: url('fondo2.jpg');
+    background-color: #ffffff;
+    color: #000000;
+}
+
 h1{color: #fafafa;}
 .login-container {
     background-color: #ffffff;

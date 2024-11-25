@@ -1,6 +1,5 @@
 /* Estilo general del cuerpo */
 body {
-    background-color: #ffffff;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -8,10 +7,22 @@ body {
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
-    background-image: url('../CSS/fondo1.jpg'); /* Fondo similar al resto */
     background-size: cover;
     background-position: center;
-    color: #333;
+    
+}
+/* Tema oscuro */
+.dark-theme {
+    background-image: url('fondo1.jpg');
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* Tema claro */
+.light-theme {
+    background-image: url('fondo2.jpg');
+    background-color: #ffffff;
+    color: #000000;
 }
 
 /* Contenedor principal */
