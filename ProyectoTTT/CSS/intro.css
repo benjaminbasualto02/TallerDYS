@@ -38,10 +38,30 @@ input {
 }
 
 button {
-    margin: 10px 0;
-    width: 100%;
+    padding: 10px;
+    background-color: #3d8843;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
+button:hover {
+    background-color: #008ba3;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #00bcd4;
+}
 
 
 

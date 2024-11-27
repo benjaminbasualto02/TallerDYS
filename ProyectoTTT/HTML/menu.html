@@ -14,7 +14,7 @@
         <h4 class="TituloMenu">Tic Tac Toe</h4>
 
         <div id="user-info" class="text-center">
-            <h1 class="DecoracionUsuario">Bienvenido, <span id="user-name">Invitado</span>!</h1>
+            <h1 class="DecoracionUsuario">¡Bienvenido, <span id="user-name">Invitado</span>!</h1>
         </div>
 
         <div class="menu-buttons">
@@ -66,17 +66,30 @@
     </div>
 
     <script>
- 
+        // Código para manejar el saludo dinámico
+        document.addEventListener('DOMContentLoaded', () => {
+            const userNameElement = document.getElementById('user-name');
+            
+            // Obtener el usuario actual desde localStorage
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+            // Actualizar el saludo basado en la existencia del usuario
+            if (currentUser && currentUser.correo) { // Asegúrate de que la propiedad 'correo' esté presente
+                userNameElement.textContent = currentUser.correo; // O usa otro campo que prefieras
+            } else {
+                userNameElement.textContent = 'Invitado';
+            }
+
+            // Depuración: Mostrar el contenido del currentUser en consola
+            console.log(localStorage.getItem('currentUser'));
+        });
 
         function logout() {
-            localStorage.removeItem('usuarios');
-            window.location.href = 'intro.html';
+            localStorage.removeItem('currentUser'); // Eliminar solo el usuario actual
+            window.location.href = '../index.html'; // Redirigir al inicio
         }
-
-        </script>
+    </script>
     <script src="../JS/TableroDificultad.js"></script>
     <script src="../JS/theme.js"></script>
 </body>
 </html>
-
-

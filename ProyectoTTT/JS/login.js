@@ -18,11 +18,14 @@ document.getElementById('login-form').addEventListener('submit', function(event)
         messageElement.style.color = 'green';
     
         // Guardar toda la información del usuario actual en el localStorage
-        localStorage.setItem('currentUser', JSON.stringify(usuarioValido));
+        localStorage.setItem('currentUser', JSON.stringify({
+            correo: usuarioValido.correo,
+            nombre: usuarioValido.nombre || 'Invitado' // Usar 'nombre' si existe
+        }));
     
         // Redirigir a la página del menú
         setTimeout(() => {
-            window.location.href = 'menu.html';  // Redirige a 'menu.html'
+            window.location.href = '../ProyectoTTT/HTML/menu.html';  // Redirige a 'menu.html'
         }, 1000); // Espera 1 segundo para mostrar el mensaje antes de redirigir
     } else {
         messageElement.textContent = 'Correo electrónico o contraseña incorrectos.';

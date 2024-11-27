@@ -47,6 +47,6 @@ document.getElementById('register-form').addEventListener('submit', function (ev
 
     // Redirigir al inicio de sesión
     setTimeout(() => {
-        window.location.href = 'intro.html';
+        window.location.href = '../index.html';
     }, 2000);
 });
