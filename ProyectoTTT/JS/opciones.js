@@ -1,4 +1,4 @@
-/// Obtener la clave única para almacenar configuraciones del usuario actual
+// Obtener la clave única para almacenar configuraciones del usuario actual
 const userSettingsKey = `settings_${localStorage.getItem('currentUser')}`;
 let userSettings = JSON.parse(localStorage.getItem(userSettingsKey)) || { theme: 'dark' };
 
@@ -37,6 +37,21 @@ document.getElementById('username-submit').addEventListener('click', () => {
 document.getElementById('save-and-return').addEventListener('click', () => {
     localStorage.setItem(userSettingsKey, JSON.stringify(userSettings));
     window.location.href = 'menu.html';
+});
+
+// Eliminar cuenta y limpiar todos los datos
+document.getElementById('delete-account').addEventListener('click', () => {
+    const confirmation = confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción es irreversible.');
+
+    if (confirmation) {
+        // Eliminar todos los datos del usuario actual
+        localStorage.removeItem(userSettingsKey); // Configuración del usuario
+        localStorage.removeItem('currentUser'); // Usuario actual
+        localStorage.removeItem('usuarios'); // Lista de usuarios, si aplica
+
+        alert('¡Cuenta eliminada exitosamente!');
+        window.location.href = '../index.html'; // Cambiar al login
+    }
 });
 
 // Aplicar el tema al cargar la página

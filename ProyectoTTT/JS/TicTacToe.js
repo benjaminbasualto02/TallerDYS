@@ -4,6 +4,8 @@ let isPlayerTurn = true; // Controla si es el turno del jugador
 let playerWins = 0; // Contador de victorias del jugador
 let aiWins = 0; // Contador de victorias de la IA
 let ties = 0; // Contador de empates
+let totalGames = 0; // Contador de partidas jugadas
+const maxGames = 3; // Número máximo de partidas
 
 function buildGame(boardSize, difficulty) {
     const boardContainer = document.getElementById('board-container');
@@ -99,70 +101,56 @@ function setGameStatus(message) {
 }
 
 function updateStats(winner) {
-    const currentUser = localStorage.getItem('currentUser');
-    
-    if (!currentUser) {
-        console.error("Usuario no encontrado");
-        return;
-    }
-
-    // Obtener las estadísticas del jugador desde localStorage
-    let stats = JSON.parse(localStorage.getItem(currentUser)) || { playerWins: 0, aiWins: 0, ties: 0 };
-
-    // Actualizar las estadísticas según el resultado
     if (winner === 'player') {
-        stats.playerWins += 1;
+        playerWins++;
     } else if (winner === 'ai') {
-        stats.aiWins += 1;
+        aiWins++;
     } else if (winner === 'tie') {
-        stats.ties += 1;
+        ties++;
     }
 
-    // Guardar las estadísticas actualizadas en el localStorage
-    localStorage.setItem(currentUser, JSON.stringify(stats));
+    totalGames++;
+
+    // Actualizar el marcador
+    document.getElementById('player-score').textContent = playerWins;
+    document.getElementById('ai-score').textContent = aiWins;
+    document.getElementById('ties-score').textContent = ties;
 
     // Mostrar el mensaje de victoria o empate
-    setGameStatus(winner === 'player' ? '¡Has ganado!' : winner === 'ai' ? '¡La IA ganó!' : '¡Es un empate!');
+    setGameStatus(
+        winner === 'player' ? '¡Has ganado!' :
+        winner === 'ai' ? '¡La IA ganó!' :
+        '¡Es un empate!'
+    );
 
-    // Reiniciar el juego después de un breve tiempo
-    setTimeout(() => {
-        buildGame(3, 'facil');  // Puedes pasar el tamaño del tablero y la dificultad como quieras
-    }, 2000);
+    // Revisar si se alcanzó el máximo de partidas
+    if (totalGames >= maxGames) {
+        setTimeout(endGame, 2000); // Finalizar el juego después de un breve tiempo
+    } else {
+        // Reiniciar el juego después de un breve tiempo
+        setTimeout(() => {
+            buildGame(3, 'facil'); // Puedes pasar el tamaño del tablero y la dificultad como quieras
+        }, 2000);
+    }
 }
 
-function getBestMove(board, currentPlayer, boardSize, difficulty) {
-    const emptyCells = getEmptyCells(board);
+function endGame() {
+    const boardContainer = document.getElementById('board-container');
+    boardContainer.innerHTML = `
+        <h3>Resultados Finales</h3>
+        <p>Victorias del jugador: ${playerWins}</p>
+        <p>Victorias de la IA: ${aiWins}</p>
+        <p>Empates: ${ties}</p>
+        <button id="back-to-menu" class="btn btn-primary">Volver al Menú</button>
+    `;
 
-    if (difficulty === 'medio') {
-        for (let cell of emptyCells) {
-            board[cell] = currentPlayer;
-            if (checkWin(board, boardSize, currentPlayer)) {
-                board[cell] = null; // Deshace el movimiento
-                return cell; // Gana si puede
-            }
-            board[cell] = null;
-
-            board[cell] = getOpponent(currentPlayer);
-            if (checkWin(board, boardSize, getOpponent(currentPlayer))) {
-                board[cell] = null; // Deshace el movimiento
-                return cell; // Bloquea al jugador si está a punto de ganar
-            }
-            board[cell] = null;
-        }
-        return emptyCells[Math.floor(Math.random() * emptyCells.length)];
-    }
-
-    if (difficulty === 'dificil') {
-        return getBestMove(board, 'O', boardSize, 'medio'); // Simulación intermedia para mejorar rendimiento
-    }
+    document.getElementById('back-to-menu').addEventListener('click', () => {
+        window.location.href = '../HTML/menu.html'; // Cambiar por la ruta correcta al menú
+    });
 }
 
 function getEmptyCells(board) {
     return board.map((cell, index) => (cell === null ? index : null)).filter(index => index !== null);
-}
-
-function getOpponent(player) {
-    return player === 'X' ? 'O' : 'X';
 }
 
 function checkWin(boardState, size, player) {
@@ -186,24 +174,4 @@ function getWinPatterns(boardSize) {
     patterns.push(rows.map(i => (i + 1) * (boardSize - 1))); // Diagonal secundaria
 
     return patterns;
-}
-
-function loadStats() {
-    const currentUser = localStorage.getItem('currentUser');
-    
-    if (!currentUser) {
-        console.error("Usuario no encontrado");
-        return;
-    }
-
-    // Obtener las estadísticas del jugador desde localStorage
-    const stats = JSON.parse(localStorage.getItem(currentUser)) || { playerWins: 0, aiWins: 0, ties: 0 };
-
-    // Mostrar las estadísticas en el estado del juego
-    const statusElement = document.getElementById('game-status');
-    statusElement.innerHTML = `
-        <p>Victorias del jugador: ${stats.playerWins}</p>
-        <p>Victorias de la IA: ${stats.aiWins}</p>
-        <p>Empates: ${stats.ties}</p>
-    `;
 }
