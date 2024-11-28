@@ -25,7 +25,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     
         // Redirigir a la página del menú
         setTimeout(() => {
-            window.location.href = '../ProyectoTTT/HTML/menu.html';  // Redirige a 'menu.html'
+            window.location.href = 'HTML/menu.html';  // Redirige a 'menu.html'
         }, 1000); // Espera 1 segundo para mostrar el mensaje antes de redirigir
     } else {
         messageElement.textContent = 'Correo electrónico o contraseña incorrectos.';
