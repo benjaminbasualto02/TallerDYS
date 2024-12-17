@@ -26,6 +26,7 @@ h2 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Tema oscuro */
 .dark-theme {
     background-image: url('fondo1.jpg');
     background-color: #121212;
@@ -37,6 +38,20 @@ h2 {
     background-image: url('fondo2.jpg');
     background-color: #ffffff;
     color: #000000;
+}
+
+/* Skin 1 */
+.skin1 {
+    background-image: url('skin1.jpg');
+    background-size: cover; /* Asegura que la imagen cubra todo el área */
+    background-position: center;
+}
+
+/* Skin 2 */
+.skin2 {
+    background-image: url('skin2.jpg');
+    background-size: cover; /* Asegura que la imagen cubra todo el área */
+    background-position: center;
 }
 
 /* Estilo para la cuadrícula del tablero */
@@ -78,13 +93,6 @@ h2 {
     color: #333333;
     font-family: 'Patrick Hand', sans-serif;
 }
-
-
-
-
-
-
-
 
 /* Estilo para el modal */
 .modal-content {

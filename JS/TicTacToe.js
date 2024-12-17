@@ -7,6 +7,14 @@ let ties = 0; // Contador de empates
 let totalGames = 0; // Contador de partidas jugadas
 const maxGames = 3; // Número máximo de partidas
 
+// Cargar skin seleccionada y aplicarla al tablero
+function applyBoardSkin(grid) {
+    const selectedSkin = localStorage.getItem('selectedSkin');
+    if (selectedSkin) {
+        grid.classList.add(selectedSkin); // Añade la clase de la skin seleccionada
+    }
+}
+
 function buildGame(boardSize, difficulty) {
     const boardContainer = document.getElementById('board-container');
     boardContainer.innerHTML = ''; // Limpiar contenido previo
@@ -16,6 +24,9 @@ function buildGame(boardSize, difficulty) {
     grid.classList.add('grid');
     grid.style.gridTemplateColumns = `repeat(${boardSize}, 100px)`;
     grid.style.gridTemplateRows = `repeat(${boardSize}, 100px)`;
+
+    // Aplicar la skin al tablero
+    applyBoardSkin(grid);
 
     boardState = Array(boardSize * boardSize).fill(null); // Inicializar estado del tablero
 

@@ -13,23 +13,54 @@
         
         <div class="row mb-3">
             <div class="col-12 text-center">
-                <button class="btn btn-primary" id="backButton">Guardar y volver.</button>
+                <button class="btn btn-primary" id="backButton">Guardar y volver</button>
             </div>
         </div>
 
+        <!-- Contenedor de skins -->
         <div class="row" id="skins-container">
-            <!-- Aquí se mostrarán las skins -->
-        </div>
-
-        <div class="row mt-3">
-            <div class="col-12 text-center">
-                <h2 id="experience">Experiencia: 0</h2>
+            <!-- Slots de skins -->
+            <div class="col-md-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-header">Skin 1</div>
+                    <div class="card-body">
+                        <div class="skin-preview skin1"></div> <!-- Vista previa -->
+                        <button class="btn btn-success mt-2 select-skin" data-skin="skin1">Seleccionar</button>
+                        <p class="equipped-text"></p> <!-- Mostrar "Equipado" aquí -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-header">Skin 2</div>
+                    <div class="card-body">
+                        <div class="skin-preview skin2"></div> <!-- Vista previa -->
+                        <button class="btn btn-success mt-2 select-skin" data-skin="skin2">Seleccionar</button>
+                        <p class="equipped-text"></p> <!-- Mostrar "Equipado" aquí -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <script src="inventario.js"></script>
-    <script src="theme.js"></script> <!-- Script para el tema -->
+    <script src="../JS/inventario.js"></script>
+    <script src="../JS/theme.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Aplicar el tema al cargar la página -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userSettingsKey = `settings_${localStorage.getItem('currentUser')}`;
+            let userSettings = JSON.parse(localStorage.getItem(userSettingsKey)) || { theme: 'dark' };
+
+            // Función para aplicar el tema
+            function applyTheme() {
+                document.body.className = userSettings.theme === 'dark' ? 'dark-theme' : 'light-theme';
+            }
+
+            // Aplicar el tema al cargar
+            applyTheme();
+        });
+    </script>
 </body>
 </html>
